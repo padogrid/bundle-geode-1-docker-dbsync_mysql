@@ -36,7 +36,7 @@ docker
 
 ### MySQL
 
-The `db` cluster has been preconfigured to connect to MySQL on localhost with the user name `root` and the password `MySql123`. If you need to change user name and password, edit `etc/hibernate.cfg-mysql.xml`.
+The `db` cluster has been preconfigured to connect to MySQL on localhost with the user name `root` and the password `password`. If you need to change user name and password, edit `etc/hibernate.cfg-mysql.xml`.
 
 ```console
 switch_cluster db
@@ -59,6 +59,10 @@ cd_app perf_test_db; cd bin_sh
 ## Startup Sequence
 
 ```console
+# 0. If you installed the bundle as a workspace, then make sure to first switch into
+#    to set the workspace context.
+switch_workspace bundle-geode-1-docker-dbsync_mysql
+
 # 1. Add a locator and at least two (2) members to the `db` cluster. All bundles come without members.
 switch_cluster db
 add_locator; add_member; add_member
@@ -81,7 +85,7 @@ Adminer URL: http://localhost:8081
 
 ```console
 Username: root
-Password: MySql123
+Password: password
 Database to create: nw
 ```
 
@@ -238,3 +242,35 @@ stop_cluster
 cd_docker dbsync_mysql
 docker-compose down
 ```
+
+## Troubleshooting Guide
+
+### 1. I'm getting the following exception when I run `test_group`.
+
+```console
+Exception in thread "Thread-9" org.apache.geode.cache.client.ServerOperationException: remote server on padomac(28495:loner):56240:d468f50f: : While performing a remote put
+...
+Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.apache.geode.addon.cluster.util.HibernatePool
+...
+```
+
+This may occur if you have not created the `nw` database in MySQL. You can look at a member log to confirm this error as follows.
+
+```bash
+show_log -full |grep "Unknown databas"
+```
+
+Output:
+
+```console
+2022-05-29 09:07:50 ERROR SqlExceptionHelper:142 - Unknown database 'nw'
+Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'nw'
+```
+
+Make sure to create the `nw` database as described in the [Startup Sequence](#startup-sequence) section. For thi change to take effect, you may need to restart the Geode/GemFire cluster as shown below.
+
+```bash
+# Restart Geode cluster
+stop_cluster
+start_cluster
+````
