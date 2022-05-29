@@ -275,3 +275,11 @@ Make sure to create the `nw` database as described in the [Startup Sequence](#st
 stop_cluster
 start_cluster
 ````
+
+### 2. I'm seeing Hibernate's `not for prodction use!` messages in the log files as follows.
+
+```console
+2022-05-29 09:04:20 WARN  pooling:73 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+```
+
+The Hibernate plugin provided in your version of PadoGrid is not for production use. Please use it as a demo until a newer version of PadoGrid lifts this restriction.
