@@ -5,20 +5,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.apache.geode.addon</groupId>
-        <!-- @template: Enter your bundle name here -->
-        <artifactId>bundle-geode-template</artifactId>
+	<groupId>padogrid.addon</groupId>
+	<artifactId>bundle-geode-1-docker-dbsync_mysql</artifactId>
 	<packaging>pom</packaging>
 	<name>${project.artifactId}</name>
 	<version>1.0.0</version>
-        <!-- @template: Enter your bundle description -->
-        <description>Bundle template</description>
+	<description>WAS test bundle</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<geode.version>1.12.0</geode.version>
+		<geode.version>1.14.0</geode.version>
 		<skipTests>true</skipTests>
 	</properties>
 

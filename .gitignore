@@ -19,11 +19,13 @@ buildNumber.properties
 bundles
 lib
 plugins
+run
+stats
 
 # PadoGrid workspace directories
 apps
-clusters
-docker
+#clusters
+#docker
 k8s
 pods
 .workspace
