@@ -24,10 +24,13 @@ bundles
 lib
 plugins
 run
+log
 stats
+results
+*.xml0
 
 # PadoGrid workspace directories
-apps
+#apps
 #clusters
 #docker
 k8s
@@ -37,8 +40,7 @@ pods
 
 # Bundle specifics
 archive
-log
 lib
 desktop
-setenv.sh0
+*.sh0
 build
