@@ -248,6 +248,7 @@ docker-compose down
 ### 1. I'm getting the following exception when I run `test_group`.
 
 ```console
+...
 Exception in thread "Thread-9" org.apache.geode.cache.client.ServerOperationException: remote server on padomac(28495:loner):56240:d468f50f: : While performing a remote put
 ...
 Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.apache.geode.addon.cluster.util.HibernatePool
