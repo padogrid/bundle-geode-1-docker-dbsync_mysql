@@ -235,8 +235,8 @@ HIBERNATE_CONFIG_FILE="$CLUSTER_DIR/etc/hibernate.cfg-mydb.xml"
 ## Teardown
 
 ```console
-# Stop the cluster.
-stop_cluster
+# Stop the cluster
+stop_cluster -all
 
 # Stop Docker Compose
 cd_docker dbsync_mysql
