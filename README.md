@@ -1,4 +1,4 @@
-# Bundle: MySQL Sync
+# GemFire/Geode and MySQL Sync
 
 This bundle is preconfigured to synchronize Geode/GemFire with MySQL running as a Docker container. It includes the `db` cluster app to read/write from/to Geode/GemFire and MySQL. It also includes instructions for replacing MySQL with another database.
 
@@ -17,7 +17,7 @@ install_bundle -checkout bundle-geode-1-docker-dbsync_mysql
 
 ## Use Case
 
-The client applications read/write from/to Geode/GemFire which in turn read/write from/to a database. The database is used as the persistent store and Geode/GemFire as the bidirectional cache-aside store. The Geode/GemFire maps are configured with the LFU eviction policy to evict entries if the free heap size falls below 25% of the maximum heap size. This ensures the Geode/GemFire cluster will have at least 25% of free memory at all time which is necessary for executing distributed operations such as query and task executions.
+The client applications read/write from/to Geode/GemFire which in turn read/write from/to a database. The database is used as the persistent store and Geode/GemFire as the bidirectional cache-aside store. The Geode/GemFire regions are configured with the LRU eviction policy to evict entries if the used heap size reaches 80% of the maximum heap size. This ensures the Geode/GemFire cluster will have at least 20% of free memory at all time which is necessary for executing distributed operations such as query and function executions.
 
 ![DB Sync Screenshot](images/mysql-sync.png)
 
@@ -70,12 +70,12 @@ start_cluster
 #    executed by the CacheWriterLoaderPkDbImpl plugin.
 show_log
 
-# 4. Open another terminal and launch Docker Compose.
+# 4. Open another terminal and launch Docker Compose in background (-d).
 cd_docker dbsync_mysql
-docker-compose up
+docker-compose up -d
 ```
 
-5. The Docker Compose environment includes *Adminer*. Open it in the browser and add the **nw** database in which we will be syncronizing Geode/GemFire the `nw/customers` and `nw/orders` maps. When you run the `test_group` script (see below), the `customers` and `orders` tables will automatically be created in the `nw` database by Hibernate invoked by the `CacheWriterLoaderPkDbImpl` plugin.
+5. The Docker Compose environment includes *Adminer*. Open it in the browser and add the **nw** database in which we will be syncronizing Geode/GemFire the `nw/customers` and `nw/orders` regions. When you run the `test_group` script (see below), the `customers` and `orders` tables will automatically be created in the `nw` database by Hibernate invoked by the `CacheWriterLoaderPkDbImpl` plugin.
 
 Adminer URL: http://localhost:8081
 
