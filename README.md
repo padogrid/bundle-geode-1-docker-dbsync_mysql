@@ -249,26 +249,25 @@ docker-compose down
 
 ```console
 ...
-Exception in thread "Thread-9" org.apache.geode.cache.client.ServerOperationException: remote server on padomac(28495:loner):56240:d468f50f: : While performing a remote put
+Exception in thread "Thread-8" Exception in thread "Thread-10" org.apache.geode.cache.client.ServerConnectivityException: Pool unexpected socket timed out on client connection=Pooled Connection to localhost:40404,127.0.0.1(db-padomac.local-01:65850)<v1>:41001: Connection[DESTROYED] attempt=2). Server unreachable: could not connect after 2 attempts
 ...
-Caused by: java.lang.NoClassDefFoundError: Could not initialize class org.apache.geode.addon.cluster.util.HibernatePool
+Caused by: java.net.SocketTimeoutException: Read timed out
 ...
 ```
 
 This may occur if you have not created the `nw` database in MySQL. You can look at a member log to confirm this error as follows.
 
 ```bash
-show_log -full |grep "Unknown databas"
+show_log -full |grep "Unknown database"
 ```
 
 Output:
 
 ```console
 2022-05-29 09:07:50 ERROR SqlExceptionHelper:142 - Unknown database 'nw'
-Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'nw'
 ```
 
-Make sure to create the `nw` database as described in the [Startup Sequence](#startup-sequence) section. For thi change to take effect, you may need to restart the Geode/GemFire cluster as shown below.
+Make sure to create the `nw` database as described in the [Startup Sequence](#startup-sequence) section. For this change to take effect, you may need to restart the Geode/GemFire cluster as shown below.
 
 ```bash
 # Restart Geode cluster
