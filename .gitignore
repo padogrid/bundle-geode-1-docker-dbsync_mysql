@@ -30,7 +30,7 @@ results
 *.xml0
 
 # PadoGrid workspace directories
-#apps
+apps
 #clusters
 #docker
 k8s
