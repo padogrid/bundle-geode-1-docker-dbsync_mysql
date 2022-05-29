@@ -1,1 +1,1 @@
-This bundle serves as a template for creating a new Geode bundle. Run `show_bundle bundle-geode-template` to see instructions.
+This bundle is preconfigured to synchronize Geode/GemFire with MySQL running as a Docker container. It includes the `db` cluster app to read/write from/to Geode/GemFire and MySQL. It also includes instructions for replacing MySQL with another database.
