@@ -7,7 +7,7 @@ This bundle is preconfigured to synchronize Geode/GemFire with MySQL running as 
 ![PadoGrid](https://github.com/padogrid/padogrid/raw/develop/images/padogrid-3d-16x16.png) [*Driven by PadoGrid*](https://github.com/padogrid)
 
 ```bash
-#witch_rwe rwe-bundles bundle-geode-1-docker-dbsync_mysqlInstal in the current workspace
+# Instal in the current workspace
 install_bundle -download bundle-geode-1-docker-dbsync_mysql
 
 # Install in the new bundle default workspace
