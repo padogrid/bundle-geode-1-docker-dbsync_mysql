@@ -3,7 +3,7 @@
 ---
 
 <!-- Platforms -->
-[![Host OS](https://github.com/padogrid/padogrid/wiki/images/padogrid-host-os.drawio.svg)](https://github.com/padogrid/padogrid/wiki/Platform-Host-OS)
+[![PadoGrid 1.x](https://github.com/padogrid/padogrid/wiki/images/padogrid-padogrid-1.x.drawio.svg)](https://github.com/padogrid/padogrid/wiki/Platform-PadoGrid-1.x) [![Host OS](https://github.com/padogrid/padogrid/wiki/images/padogrid-host-os.drawio.svg)](https://github.com/padogrid/padogrid/wiki/Platform-Host-OS)
 
 # GemFire/Geode and MySQL Sync
 
@@ -16,7 +16,7 @@ This bundle is preconfigured to synchronize Geode/GemFire with MySQL running as 
 install_bundle -download bundle-geode-1-docker-dbsync_mysql
 
 # Install in the new bundle default workspace
-install_bundle -download -workspae bundle-geode-1-docker-dbsync_mysql
+install_bundle -download -workspace bundle-geode-1-docker-dbsync_mysql
 
 # Install in the new bundle default workspace with git intact
 install_bundle -checkout bundle-geode-1-docker-dbsync_mysql
@@ -72,7 +72,7 @@ switch_workspace bundle-geode-1-docker-dbsync_mysql
 
 # 1. Add a locator and at least two (2) members to the `db` cluster. All bundles come without members.
 switch_cluster db
-add_locator; add_member; add_member
+add_locator; add_member -count 2
 
 # 2. Run the cluster.
 start_cluster
